@@ -1,5 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
+import { Component, Prop, h, State } from '@stencil/core';
 
 @Component({
   tag: 'my-component',
@@ -7,26 +6,30 @@ import { format } from '../../utils/utils';
   shadow: true
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
-  @Prop() first: string;
+  @Prop() title: string;
 
-  /**
-   * The middle name
-   */
-  @Prop() middle: string;
+  @State() clickInitiated = false;
 
-  /**
-   * The last name
-   */
-  @Prop() last: string;
-
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
+  buttonClicked(event) {
+    let element = event.srcElement;
+    element.classList.add('loading');
+    element.children[1].classList.add('loading');
+    setTimeout(
+      () => {
+        element.children[1].classList.remove('loading');
+        element.classList.remove('loading');
+      },
+      4000,
+      element
+    );
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return (
+      <button class="btn" onClick={e => this.buttonClicked(e)}>
+        <span>{this.title}</span>
+        <img id="logo" src="assets/images/credera_logo.png" alt="placeholder" />
+      </button>
+    );
   }
 }

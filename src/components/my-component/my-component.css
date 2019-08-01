@@ -1,1 +1,135 @@
+/* ~~~~~~~ INIT. BTN ~~~~~~~ */
+.btn {		
+    position: relative;
+    height: 100%;
+    width: 25%;
+    min-height: 56px;
+    padding: 12px;	
+    font-size: 1.4rem;
+    line-height: 1.3rem;
+    color: #777;
+    border: none;
+	letter-spacing: 1.1rem;
+	text-transform: uppercase;
+	cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0px 0px rgba(0,0,0,0.15);
+    transition: all 0.6s ease-in-out;
+}
 
+.btn::before,
+.btn::after {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    transition: width 0.6s ease, height 0.8s ease;
+}
+
+.btn::before {
+    top: 0px;
+    left: 0px;
+    border-top: 1px solid #a3232a;
+    border-left: 1px solid #a3232a;
+}
+
+.btn::after {
+    bottom: 0px;
+    right: 0px;
+    border-bottom: 1px solid #a3232a;
+    border-right: 1px solid #a3232a;
+}
+
+.btn:hover::before, 
+.btn:hover::after  {
+   height: 100%;
+   width: 100%;
+}
+/* Transition to a bigger shadow on hover */
+.btn:hover {
+box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn.loading {
+    width: 56px;
+    height: 56px;
+    outline: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.6s ease-in-out;
+}
+
+.btn span {
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+.btn.loading span {
+    opacity: 0;
+    overflow: hidden;
+    display: none;
+    outline: none;
+    width: 56px;
+    height: 56px;
+    transition: all 0.6s ease-in-out;
+}
+
+img {
+    display: none;
+    opacity: 0;
+}
+
+img.loading {
+    display: inherit;
+    opacity: 1;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: -15px;
+}
+
+
+#logo {
+    -webkit-animation-name: spinner; 
+   -webkit-animation-timing-function: linear; 
+   -webkit-animation-iteration-count: infinite; 
+   -webkit-animation-duration: 2s; 
+   animation-name: spinner; 
+   animation-timing-function: linear; 
+   animation-iteration-count: infinite; 
+   animation-duration: 2s; 
+   -webkit-transform-style: preserve-3d; 
+   -moz-transform-style: preserve-3d; 
+   -ms-transform-style: preserve-3d; 
+   transform-style: preserve-3d;
+ }
+ 
+ 
+ /* WebKit and Opera browsers */ 
+ @-webkit-keyframes spinner { 
+   from 
+   { 
+     -webkit-transform: rotateY(0deg); 
+   } 
+   to { 
+     -webkit-transform: rotateY(-360deg); 
+   } 
+ } 
+ /* all other browsers */ 
+ @keyframes spinner { 
+    from { 
+     -moz-transform: rotateY(0deg); 
+     -ms-transform: rotateY(0deg); 
+     transform: rotateY(0deg); 
+    } 
+    to 
+    { 
+     -moz-transform: rotateY(-360deg); 
+     -ms-transform: rotateY(-360deg); 
+     transform: rotateY(-360deg); 
+ 
+    } 
+ }
